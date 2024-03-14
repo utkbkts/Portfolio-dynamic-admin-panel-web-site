@@ -73,14 +73,14 @@ const Blog = () => {
             {postsBlog.map((item) => (
               <div
                 key={item._id}
-                className="flex flex-col shadow-md p-2 rounded-md border-primary border  transition-all duration-300 ease-in-out "
+                className="flex flex-col shadow-md p-2 rounded-md border-primary border  transition-all duration-300 ease-in-out h-[500px]"
               >
-                <div className="relative  overflow-hidden  lg:w-[400px]  w-full">
+                <div className="relative  overflow-hidden w-full ">
                   <div className="w-full relative  overflow-hidden ">
                     <img
                       src={item.image.url}
                       alt="image"
-                      className="lg:w-[400px] w-full h-[300px] rounded-md object-cover"
+                      className=" w-full h-[300px] rounded-md object-cover"
                     />
                     {!CreatedHandle(item.createdAt) && (
                       <div className="absolute  bg-primary font-title text-red uppercase p-2  top-0 right-0">

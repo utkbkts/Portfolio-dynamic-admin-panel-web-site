@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const res = JSON.parse(localStorage.getItem("admin"));
 
-    if (!res.user.admin) {
+    if (!res?.user?.admin) {
       navigate("/");
     }
   }, []);

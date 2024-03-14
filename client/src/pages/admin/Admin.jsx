@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import { useDispatch } from "react-redux";
@@ -11,20 +11,19 @@ const AdminLogin = () => {
   const data = JSON.parse(localStorage.getItem("admin"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const authFunch = () => {
-    if (signUp) {
-      dispatch(RegisterActions(email, password));
-    } else {
-      dispatch(LoginActions(email, password));
-    }
+    dispatch(LoginActions(email, password));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     authFunch();
   };
-  if (data.user.admin) {
-    navigate("/admindashboard");
-  }
+  useEffect(() => {
+    if (data?.user?.admin) {
+      navigate("/admindashboard");
+    }
+  }, [data]);
 
   return (
     <div className="w-full h-screen bg-seconday flex items-center justify-center">
@@ -33,9 +32,7 @@ const AdminLogin = () => {
           onSubmit={handleSubmit}
           className="flex flex-col items-center justify-center my-20 md:w-1/2 w-full mx-auto gap-4"
         >
-          <h1 className="text-4xl font-title">
-            {signUp ? "ADMIN REGISTER" : "ADMIN LOGIN"}
-          </h1>
+          <h1 className="text-4xl font-title">LOGIN</h1>
           <div className="flex flex-col gap-y-2 w-full">
             <input
               className="form-control"
@@ -56,19 +53,16 @@ const AdminLogin = () => {
             />
           </div>
           <div className="flex flex-col w-full gap-y-3">
-            <Button text={signUp ? "REGISTER" : "LOGIN"} type="submit" />
+            <Button text={"LOGIN"} type="submit" />
             <div className="flex items-center gap-4">
               <Link to="/">
                 <span className="text-sm underline cursor-pointer text-secondary text-white">
                   Home Page
                 </span>
               </Link>
-              <span
-                onClick={() => setsignUp(!signUp)}
-                className="text-sm underline cursor-pointer text-secondary text-white"
-              >
-                {signUp ? "LOGIN" : "REGISTER"}
-              </span>
+              {/* <span className="text-sm underline cursor-pointer text-secondary text-white">
+                LOGIN
+              </span> */}
             </div>
           </div>
         </form>

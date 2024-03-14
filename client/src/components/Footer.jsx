@@ -7,19 +7,22 @@ const Footer = () => {
         <div className="flex items-center justify-center flex-col h-full">
           <div className="flex items-center gap-4">
             <a
-              href="/"
+              target="_blank"
+              href="https://www.linkedin.com/in/utku-bektasoglu/"
               className="bg-white w-12 h-12 flex items-center justify-center rounded-full"
             >
               <i className="fa-brands fa-linkedin"></i>
             </a>
             <a
-              href=""
+              target="_blank"
+              href="https://github.com/utkbkts"
               className="bg-white w-12 h-12 flex items-center justify-center rounded-full"
             >
               <i className="fa-brands fa-github"></i>
             </a>
             <a
-              href=""
+              target="_blank"
+              href="https://www.youtube.com/@Codewithutku"
               className="bg-white w-12 h-12 flex items-center justify-center rounded-full"
             >
               <i className="fa-brands fa-youtube"></i>

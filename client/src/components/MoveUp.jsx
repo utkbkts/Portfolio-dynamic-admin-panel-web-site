@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const MoveUp = () => {
-  const [scrollDown, setscrollDown] = useState(true);
+  const [scrollDown, setscrollDown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
