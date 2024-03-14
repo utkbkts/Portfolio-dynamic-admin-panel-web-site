@@ -13,7 +13,10 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5000", "https://www.utkubektasoglu.pro/"],
+    origin: [
+      "portfolio-dynamic-admin-panel-web-site-seven.vercel.app",
+      "https://www.utkubektasoglu.pro/",
+    ],
   })
 );
 app.use(bodyparser.json({ limit: "30mb", extended: true }));
