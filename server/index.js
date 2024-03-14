@@ -11,11 +11,7 @@ const messageRouter = require("./routes/message.js");
 dotenv.config();
 
 const app = express();
-app.use(
-  cors({
-    origin: ["", "https://www.utkubektasoglu.pro/"],
-  })
-);
+app.use(cors());
 app.use(bodyparser.json({ limit: "30mb", extended: true }));
 app.use(bodyparser.urlencoded({ limit: "30mb", extended: true }));
 app.use("/", authRouter);
