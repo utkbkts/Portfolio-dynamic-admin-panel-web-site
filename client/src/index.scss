@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  // font-weight: 100;
+  // font-style: normal;
+}
+
+/* Scroll çubuğunun rengini ve boyutunu değiştirmek */
+::-webkit-scrollbar {
+  width: 10px; /* Yatay scroll çubuğu genişliği */
+  height: 10px; /* Dikey scroll çubuğu yüksekliği */
+}
+
+/* Scroll çubuğu arka plan rengi */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Scroll çubuğu okları ve gölge rengi */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Scroll çubuğu üzerine gelindiğinde rengi */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+// ÇİZGİ BELİRLEMEK
+
+.title {
+  -webkit-text-stroke: 2px #ffffff;
+}
+.title-1 {
+  -webkit-text-stroke: 1px #dee2e6;
+  font-size: calc(2.125rem + 10.5vw);
+  line-height: 1.2;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+}
+.title-2 {
+  font-size: calc(1.375rem + 1.5vw);
+  line-height: 1.2;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+}
+.title-3 {
+  font-size: calc(1.575rem + 3.9vw);
+}
+// ÇİZGİ BELİRLEMEK FINISH
+
+// SHODOW FOCUS BUTTON
+.btn {
+  &:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+// SHODOW FOCUS BUTTON FINISH
+
+// BTN PLAYER
+.btn-play {
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 100%;
+    animation: pulse-border 2s ease-out infinite;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 100%;
+    transition: all 200ms;
+  }
+}
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(2);
+    opacity: 0;
+  }
+}
+// BTN PLAYER FINISH
+
+//ANIMATION
+.down {
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
+// çift haneli arka plan renk değiştirmek
+
+.oven {
+  &:nth-child(even) {
+    background: #e0e0e0;
+  }
+}
+
+// PLUS HOVER
+// .plus {
+//   opacity: 0;
+//   transition: all 0.5s ease;
+//   visibility: hidden;
+// }
+.image-hover {
+  position: relative;
+}
+
+.slick-slide > div {
+  margin: 0 20px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 1.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  outline: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 25px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    box-shadow: 0 0 10px #0bceaf;
+  }
+}
+.fa-linkedin {
+  font-size: 30px;
+  color: blue;
+}
+.fa-github {
+  font-size: 30px;
+}
+.fa-youtube {
+  font-size: 30px;
+  color: red;
+}
+
+//cookies
+
+.bottom-hover {
+  animation: bottoms 1s ease-in-out;
+}
+@keyframes bottoms {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// moveup
+
+.MoveUp {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border: 1px solid #343a40;
+  border-radius: 100px;
+  width: 30px;
+  padding: 5px;
+  transition: all 0.5s ease-in-out;
+  animation: action 1s infinite alternate;
+  &:hover {
+    background: #343a40;
+    color: #0bceaf;
+    cursor: pointer;
+  }
+  .move {
+    display: flex;
+    flex-direction: column;
+
+    i {
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes action {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
