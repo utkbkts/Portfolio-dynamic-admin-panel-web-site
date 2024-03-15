@@ -4,6 +4,7 @@ import logo from "../assets/ben.jpg";
 import { motion, useInView } from "framer-motion";
 import { GetAboutPost } from "../redux/actions/AboutActions";
 import { useDispatch, useSelector } from "react-redux";
+import Spinner from "./Spinner";
 const variants = {
   initial: {
     opacity: 0,
@@ -46,9 +47,10 @@ const About = () => {
   }, [dispatch]);
   return (
     <section className="h-auto">
-      {loading ? (
-        <div className="flex items-center justify-center font-title">
-          <h1>Data is loading</h1>
+      {!loading ? (
+        <div className="flex items-center justify-center font-title gap-4">
+          <h1>Wait while the data is loading</h1>
+          <Spinner />
         </div>
       ) : (
         <>
