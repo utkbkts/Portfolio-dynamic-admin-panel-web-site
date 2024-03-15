@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // 3 saniye sonra loading ekranını kaldır
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
