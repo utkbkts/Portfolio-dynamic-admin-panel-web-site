@@ -25,6 +25,9 @@ const BlogPostCreate = async (req, res) => {
 
 const getBlogPost = async (req, res) => {
   try {
+    // MongoDB'deki verileri güncellediğinizde Upstash önbelleğini temizleyin
+    await redis.del("blogpost");
+
     const cached = await redis.get("blogpost");
     if (cached) {
       return res.status(200).json(JSON.parse(cached));

@@ -25,6 +25,9 @@ const createPortfolio = async (req, res) => {
 
 const getPortfolio = async (req, res) => {
   try {
+    // MongoDB'deki verileri güncellediğinizde Upstash önbelleğini temizleyin
+    await redis.del("portfolioPost");
+
     const cached = await redis.get("portfolioPost");
     if (cached) {
       return res.status(200).json(JSON.parse(cached));

@@ -83,6 +83,7 @@ const Blog = () => {
                         <img
                           src={item.image.url}
                           alt="image"
+                          loading="lazy"
                           className=" h-[300px] rounded-md object-cover w-full"
                         />
                         {!CreatedHandle(item.createdAt) && (

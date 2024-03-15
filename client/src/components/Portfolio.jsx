@@ -83,7 +83,8 @@ const Portfolio = () => {
               <div className="relative">
                 <img
                   src={item.image.url}
-                  alt=""
+                  alt="image"
+                  loading="lazy"
                   className="w-full object-cover  h-full"
                 />
                 <Link

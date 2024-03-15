@@ -79,6 +79,7 @@ const About = () => {
                 <img
                   src={item.image}
                   alt="image"
+                  loading="lazy"
                   className="w-[300px] h-[445px] rounded-md object-cover bg-orange-500"
                 />
               </motion.div>
