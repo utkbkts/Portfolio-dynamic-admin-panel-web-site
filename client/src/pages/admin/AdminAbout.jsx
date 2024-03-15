@@ -19,7 +19,7 @@ const initialState = {
   educationLevel: "",
   projectFinished: "",
   freelance: "",
-  selectedFile: null,
+  image: null,
 };
 
 const AdminAbout = () => {
@@ -33,6 +33,21 @@ const AdminAbout = () => {
       ...prevData,
       [name]: value,
     }));
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    setFileBase(file);
+  };
+  const setFileBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setFormData((prev) => ({
+        ...prev,
+        image: reader.result,
+      }));
+    };
   };
 
   const handleSubmit = (e) => {
@@ -61,11 +76,10 @@ const AdminAbout = () => {
         educationLevel: postsAbout[0].educationLevel || "",
         projectFinished: postsAbout[0].projectFinished || "",
         freelance: postsAbout[0].freelance || "",
-        selectedFile: postsAbout[0].selectedFile || null,
+        image: postsAbout[0].image || null,
       });
     }
   }, [postsAbout]);
-
   return (
     <div>
       <form onSubmit={handleSubmit} className="">
@@ -90,16 +104,11 @@ const AdminAbout = () => {
                         onChange={handleChange}
                         className="w-full p-1 border border-gray-300 outline-none rounded text-black"
                       />
-                    ) : field === "selectedFile" ? (
-                      <FileBase
+                    ) : field === "image" ? (
+                      <input
                         type="file"
-                        multiple={false}
-                        onDone={({ base64 }) =>
-                          setFormData({
-                            ...formData,
-                            selectedFile: base64,
-                          })
-                        }
+                        name="image"
+                        onChange={handlePhotoChange}
                       />
                     ) : (
                       <input

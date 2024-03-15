@@ -45,8 +45,15 @@ const AboutPostSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    selectedFile: {
-      type: String,
+    image: {
+      public_id: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      },
     },
   },
   { timestamps: true }

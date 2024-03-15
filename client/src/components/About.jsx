@@ -45,9 +45,10 @@ const About = () => {
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, [dispatch]);
+
   return (
     <section className="h-auto">
-      {!loading ? (
+      {loading ? (
         <div className="flex items-center justify-center font-title gap-4">
           <h1>Wait while the data is loading</h1>
           <Spinner />
@@ -77,7 +78,7 @@ const About = () => {
                 className="lg:w-1/2 w-full flex lg:items-start relative items-center justify-center h-full mb-12 md:mt-0"
               >
                 <img
-                  src={item.selectedFile}
+                  src={item.image}
                   alt="image"
                   className="w-[300px] h-[445px] rounded-md object-cover bg-orange-500"
                 />

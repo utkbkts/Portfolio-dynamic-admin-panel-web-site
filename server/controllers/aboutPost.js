@@ -1,9 +1,21 @@
 const AboutPostSchema = require("../models/aboutPost.js");
+const cloudinary = require("../utils/cloudinary.js");
 
 const aboutPostCreate = async (req, res) => {
   try {
-    const newPosts = await AboutPostSchema.create(req.body);
-    res.status(201).json(newPosts);
+    const formdata = req.body;
+    const results = await cloudinary.uploader.upload(formdata.image, {
+      folder: "products",
+    });
+    const product = await AboutPostSchema.create({
+      ...formdata,
+      image: {
+        public_id: results.public_id,
+        url: results.secure_url,
+      },
+    });
+
+    res.status(201).json(product);
   } catch (error) {
     console.log(error);
     res.status(401).json({ message: error.message });
