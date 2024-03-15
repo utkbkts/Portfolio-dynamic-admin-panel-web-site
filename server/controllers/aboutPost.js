@@ -25,8 +25,7 @@ const aboutPostCreate = async (req, res) => {
 const getAboutPost = async (req, res) => {
   try {
     const getPosts = await AboutPostSchema.find();
-
-    res.status(200).json(getPosts);
+    res.status(201).json(getPosts);
   } catch (error) {
     console.log(error);
     res.status(401).json({ message: error.message });

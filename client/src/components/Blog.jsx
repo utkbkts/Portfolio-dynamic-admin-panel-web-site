@@ -75,11 +75,8 @@ const Blog = () => {
           >
             <div className="swiper-wrapper">
               {postsBlog.map((item) => (
-                <SwiperSlide className="swiper-slide">
-                  <div
-                    key={item._id}
-                    className="flex flex-col shadow-md p-2 rounded-md border-primary border  transition-all duration-300 ease-in-out h-[500px] w-full"
-                  >
+                <SwiperSlide key={item._id} className="swiper-slide">
+                  <div className="flex flex-col shadow-md p-2 rounded-md border-primary border  transition-all duration-300 ease-in-out h-[500px] w-full">
                     <div className="relative  overflow-hidden  w-full">
                       <div className=" relative  overflow-hidden w-full">
                         <img
