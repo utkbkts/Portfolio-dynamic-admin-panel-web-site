@@ -80,8 +80,6 @@ const AdminAbout = () => {
     }
   }, [postsAbout]);
 
-  console.log(postsAbout);
-
   return (
     <div>
       <form onSubmit={handleSubmit} className="">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Exprience from "../components/Exprience";
@@ -19,8 +19,12 @@ const Home = () => {
       <Exprience />
       <Skills />
       <Services />
-      <Portfolio />
-      <Blog />
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Portfolio />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Blog />
+      </Suspense>
       <Contact />
       <MoveUp />
     </div>

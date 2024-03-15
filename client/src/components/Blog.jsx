@@ -31,7 +31,6 @@ const Blog = () => {
     const diffInDays = (currentDate - postDate) / (1000 * 60 * 60 * 24);
     return diffInDays <= 7;
   };
-  console.log(postsBlog);
 
   return (
     <section className="h-auto mt-24 mb-24 overflow-hidden">

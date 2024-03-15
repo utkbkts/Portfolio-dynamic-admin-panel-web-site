@@ -45,7 +45,6 @@ const About = () => {
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, [dispatch]);
-  console.log(postsAbout);
   return (
     <section className="h-auto">
       {loading ? (
