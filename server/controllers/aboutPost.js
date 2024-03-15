@@ -1,5 +1,6 @@
 const AboutPostSchema = require("../models/aboutPost.js");
 const cloudinary = require("../utils/cloudinary.js");
+const { redis } = require("../utils/redis.js");
 
 const aboutPostCreate = async (req, res) => {
   try {
@@ -24,14 +25,20 @@ const aboutPostCreate = async (req, res) => {
 
 const getAboutPost = async (req, res) => {
   try {
+    const cached = await redis.get("post");
+    if (cached) {
+      return res.status(200).json(JSON.parse(cached));
+    }
     const getPosts = await AboutPostSchema.find();
-    res.status(201).json(getPosts);
+
+    await redis.set("post", JSON.stringify(getPosts));
+
+    return res.status(200).json(getPosts);
   } catch (error) {
     console.log(error);
     res.status(401).json({ message: error.message });
   }
 };
-
 const updatePostAbout = async (req, res) => {
   try {
     const { email } = req.body;
