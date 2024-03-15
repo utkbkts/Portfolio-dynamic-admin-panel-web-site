@@ -1,5 +1,6 @@
 const PortfolioSchema = require("../models/portfolioPost.js");
 const cloudinary = require("../utils/cloudinary.js");
+const { redis } = require("../utils/redis.js");
 
 const createPortfolio = async (req, res) => {
   try {
@@ -24,9 +25,15 @@ const createPortfolio = async (req, res) => {
 
 const getPortfolio = async (req, res) => {
   try {
-    const getPost = await PortfolioSchema.find();
+    const cached = await redis.get("portfolioPost");
+    if (cached) {
+      return res.status(200).json(JSON.parse(cached));
+    }
+    const getPosts = await PortfolioSchema.find();
 
-    res.status(201).json(getPost);
+    await redis.set("portfolioPost", JSON.stringify(getPosts));
+
+    return res.status(200).json(getPosts);
   } catch (error) {
     console.log(error);
     res.status(401).json({ message: error.message });

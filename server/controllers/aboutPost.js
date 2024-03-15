@@ -25,13 +25,21 @@ const aboutPostCreate = async (req, res) => {
 
 const getAboutPost = async (req, res) => {
   try {
+    const cached = await redis.get("aboutPost");
+    if (cached) {
+      return res.status(200).json(JSON.parse(cached));
+    }
     const getPosts = await AboutPostSchema.find();
-    res.status(201).json(getPosts);
+
+    await redis.set("aboutPost", JSON.stringify(getPosts));
+
+    return res.status(200).json(getPosts);
   } catch (error) {
     console.log(error);
     res.status(401).json({ message: error.message });
   }
 };
+
 const updatePostAbout = async (req, res) => {
   try {
     const { email } = req.body;
@@ -68,21 +76,3 @@ module.exports = {
   getAboutPost,
   updatePostAbout,
 };
-
-//!REDIS
-// const getAboutPost = async (req, res) => {
-//   try {
-//     const cached = await redis.get("post");
-//     if (cached) {
-//       return res.status(200).json(JSON.parse(cached));
-//     }
-//     const getPosts = await AboutPostSchema.find();
-
-//     await redis.set("post", JSON.stringify(getPosts));
-
-//     return res.status(200).json(getPosts);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(401).json({ message: error.message });
-//   }
-// };

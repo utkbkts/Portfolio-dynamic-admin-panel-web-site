@@ -1,5 +1,6 @@
 const blogPostSchema = require("../models/blogPost.js");
 const cloudinary = require("../utils/cloudinary.js");
+const { redis } = require("../utils/redis.js");
 
 const BlogPostCreate = async (req, res) => {
   try {
@@ -24,8 +25,15 @@ const BlogPostCreate = async (req, res) => {
 
 const getBlogPost = async (req, res) => {
   try {
-    const newGetBlogPost = await blogPostSchema.find();
-    res.status(201).json(newGetBlogPost);
+    const cached = await redis.get("blogpost");
+    if (cached) {
+      return res.status(200).json(JSON.parse(cached));
+    }
+    const getPosts = await blogPostSchema.find();
+
+    await redis.set("blogpost", JSON.stringify(getPosts));
+
+    return res.status(200).json(getPosts);
   } catch (error) {
     console.log(error);
     res.status(401).json({ message: error.message });
