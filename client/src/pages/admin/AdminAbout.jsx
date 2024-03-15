@@ -49,10 +49,9 @@ const AdminAbout = () => {
       }));
     };
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData) {
+    if (postsAbout.length > 0) {
       dispatch(UpdatePostsAbout(formData));
     } else {
       dispatch(CreatePostAbout(formData));
@@ -76,10 +75,13 @@ const AdminAbout = () => {
         educationLevel: postsAbout[0].educationLevel || "",
         projectFinished: postsAbout[0].projectFinished || "",
         freelance: postsAbout[0].freelance || "",
-        image: postsAbout[0].image || null,
+        image: postsAbout[0].image.url || null,
       });
     }
   }, [postsAbout]);
+
+  console.log(postsAbout);
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="">
@@ -126,7 +128,10 @@ const AdminAbout = () => {
           </table>
         </div>
         <div className="py-2">
-          <Button text={formData ? "Update" : "Create"} type="submit"></Button>
+          <Button
+            text={postsAbout.length > 0 ? "Update" : "Create"}
+            type="submit"
+          ></Button>
         </div>
       </form>
     </div>

@@ -22,6 +22,7 @@ const AdminLogin = () => {
   useEffect(() => {
     if (data?.user?.admin) {
       navigate("/admindashboard");
+      window.location.reload();
     }
   }, [data]);
 

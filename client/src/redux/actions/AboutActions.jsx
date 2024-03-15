@@ -1,11 +1,11 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export const CreatePostAbout = (formdata) => async (dispatch) => {
+export const CreatePostAbout = (formData) => async (dispatch) => {
   try {
     const { data } = await axios.post(
       `${import.meta.env.VITE_API_URL}/createAboutPost`,
-      formdata
+      formData
     );
     dispatch({ type: "CREATE_POST", payload: data });
     toast.success("Created successfully");
