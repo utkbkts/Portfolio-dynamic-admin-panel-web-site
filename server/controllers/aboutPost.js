@@ -25,12 +25,17 @@ const aboutPostCreate = async (req, res) => {
 
 const getAboutPost = async (req, res) => {
   try {
+    // MongoDB'deki verileri güncellediğinizde Upstash önbelleğini temizleyin
+    await redis.del("aboutPost");
+
     const cached = await redis.get("aboutPost");
     if (cached) {
       return res.status(200).json(JSON.parse(cached));
     }
+
     const getPosts = await AboutPostSchema.find();
 
+    // Güncellenmiş verileri Upstash'e yeniden kaydedin
     await redis.set("aboutPost", JSON.stringify(getPosts));
 
     return res.status(200).json(getPosts);

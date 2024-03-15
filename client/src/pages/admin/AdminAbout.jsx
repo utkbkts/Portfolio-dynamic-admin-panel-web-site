@@ -75,11 +75,11 @@ const AdminAbout = () => {
         educationLevel: postsAbout[0].educationLevel || "",
         projectFinished: postsAbout[0].projectFinished || "",
         freelance: postsAbout[0].freelance || "",
-        image: postsAbout[0].image.url || null,
+        image: postsAbout[0].image || null,
       });
     }
   }, [postsAbout]);
-
+  console.log(postsAbout);
   return (
     <div>
       <form onSubmit={handleSubmit} className="">
