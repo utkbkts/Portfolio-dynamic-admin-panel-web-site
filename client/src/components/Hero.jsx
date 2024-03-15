@@ -6,6 +6,7 @@ import CV from "../assets/CV.pdf";
 import { CiPlay1 } from "react-icons/ci";
 import ReactPlayer from "react-player";
 import { FaChevronDown } from "react-icons/fa";
+import Loading from "./Loading";
 
 const Hero = () => {
   const [showModal, setShowModal] = useState(false);

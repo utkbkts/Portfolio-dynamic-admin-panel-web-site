@@ -9,22 +9,16 @@ import { Toaster } from "react-hot-toast";
 import Loading from "./components/Loading";
 const App = () => {
   const { pathname } = useLocation();
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // 3 saniye
+    }, 3000); // 3 saniye sonra loading ekranını kaldır
 
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(timer);
   }, []);
-  if (loading) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
-  }
 
   // Admin sayfasında header ve footer'ı gösterme
   if (pathname.startsWith("/admin")) {
@@ -42,13 +36,20 @@ const App = () => {
   // Diğer sayfalarda header ve footer'ı göster
   return (
     <div className="h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </main>
-      <Footer />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {" "}
+          <Header />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </main>
+          <Footer />
+        </>
+      )}
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
