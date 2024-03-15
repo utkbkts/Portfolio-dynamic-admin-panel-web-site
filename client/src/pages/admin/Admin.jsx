@@ -8,7 +8,6 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUp, setsignUp] = useState(true);
-  const data = JSON.parse(localStorage.getItem("admin"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,12 +18,19 @@ const AdminLogin = () => {
     e.preventDefault();
     authFunch();
   };
+
   useEffect(() => {
-    if (data?.user?.admin) {
-      navigate("/admindashboard");
-      window.location.reload();
-    }
-  }, [data]);
+    const checkLocalStorage = () => {
+      const data = JSON.parse(localStorage.getItem("admin"));
+      if (data?.status === "OK") {
+        navigate("/admindashboard");
+      } else {
+        setTimeout(checkLocalStorage, 100); // Tekrar denemek için 100 ms bekleyin
+      }
+    };
+
+    checkLocalStorage();
+  }, []);
 
   return (
     <div className="w-full h-screen bg-seconday flex items-center justify-center">
