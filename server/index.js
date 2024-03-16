@@ -34,18 +34,6 @@ app.use(
 
 //!server ping
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello World\n");
-});
-
-server.listen(process.env.PORT);
-
-// Keep server alive by pinging it every 5 minutes
-setInterval(() => {
-  http.get(`https://www.utkubektasoglu.pro/`);
-}, 300000); // 5 minutes
-
 //!router
 app.use("/", authRouter);
 app.use("/", aboutRouter);
