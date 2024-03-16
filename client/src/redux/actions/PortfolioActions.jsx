@@ -26,13 +26,10 @@ export const GetAboutPortfolio = () => async (dispatch) => {
   }
 };
 
-export const UpdatePostsPortfolio = (formData) => async (dispatch) => {
+export const UpdatePostsPortfolio = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/updatePortfolio`,
-      formData
-    );
-    dispatch({ type: "UPDATE_POST_PORTFOLIO", payload: data });
+    await axios.put(`${import.meta.env.VITE_API_URL}/updatePortfolio/${id}`);
+    dispatch({ type: "UPDATE_POST_PORTFOLIO", payload: id });
     toast.success("Updated successfully");
   } catch (error) {
     toast.error(error.message);

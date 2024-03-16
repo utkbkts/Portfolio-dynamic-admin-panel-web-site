@@ -70,7 +70,7 @@ const Portfolio = () => {
             <Button onClick={() => handleClick(cat)} key={index} text={cat} />
           ))}
         </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 md:h-[700px] h-[2500px] overflow-auto">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 md:h-[700px]  overflow-auto">
           {dataIndex.map((item) => (
             <motion.div
               key={item._id}
@@ -85,7 +85,7 @@ const Portfolio = () => {
                   src={item.image.url}
                   alt="image"
                   loading="lazy"
-                  className="w-full object-cover  h-full"
+                  className="w-full object-cover h-[30vh]"
                 />
                 <Link
                   target="_blank"

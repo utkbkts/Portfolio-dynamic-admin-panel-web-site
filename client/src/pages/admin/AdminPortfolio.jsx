@@ -18,7 +18,6 @@ const AdminPortfolio = () => {
   const [formdata, setformdata] = useState(initialState);
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.portfolioPost);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setformdata((prevData) => ({
@@ -75,7 +74,7 @@ const AdminPortfolio = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="">
+      <div className="">
         <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse border border-gray-300">
             <thead>
@@ -150,9 +149,9 @@ const AdminPortfolio = () => {
           </table>
         </div>
         <div className="py-2">
-          <Button text="Create" type="submit"></Button>
+          <Button onClick={handleSubmit} text="Create" type="submit"></Button>
         </div>
-      </form>
+      </div>
       <div className="h-[400px] overflow-y-auto">
         <table className="table-auto w-full border-collapse border border-gray-300  ">
           <thead>
@@ -164,6 +163,7 @@ const AdminPortfolio = () => {
               <th className="border border-gray-300 text-black p-2">Link</th>
               <th className="border border-gray-300 text-black p-2">Image</th>
               <th className="border border-gray-300 text-black p-2">Actions</th>
+              <th className="border border-gray-300 text-black p-2"></th>
             </tr>
           </thead>
           <tbody>

@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post("/createPortfolio", createPortfolio);
 router.get("/getPortfolio", getPortfolio);
-router.put("/updatePortfolio", updatePortfolio);
+router.put("/updatePortfolio/:id", updatePortfolio);
 router.delete("/deletePortfolio/:id", deletePortfolio);
 
 module.exports = router;

@@ -4,12 +4,12 @@ const { redis } = require("../utils/redis.js");
 
 const createPortfolio = async (req, res) => {
   try {
-    const formdata = req.body;
-    const results = await cloudinary.uploader.upload(formdata.image, {
+    const formData = req.body;
+    const results = await cloudinary.uploader.upload(formData.image, {
       folder: "products",
     });
     const product = await PortfolioSchema.create({
-      ...formdata,
+      ...formData,
       image: {
         public_id: results.public_id,
         url: results.secure_url,
@@ -32,7 +32,7 @@ const getPortfolio = async (req, res) => {
     if (cached) {
       return res.status(200).json(JSON.parse(cached));
     }
-    const getPosts = await PortfolioSchema.find();
+    const getPosts = await PortfolioSchema.find().sort({ timestamps: -1 });
 
     await redis.set("portfolioPost", JSON.stringify(getPosts));
 
@@ -45,14 +45,10 @@ const getPortfolio = async (req, res) => {
 
 const updatePortfolio = async (req, res) => {
   try {
-    const { email } = req.body;
-    const updatePosts = await PortfolioSchema.findOneAndUpdate(
-      { email: email },
-      req.body,
-      {
-        new: true,
-      }
-    );
+    const { _id, ...formdata } = req.body;
+    const updatePosts = await PortfolioSchema.findByIdAndUpdate(_id, formdata, {
+      new: true,
+    });
 
     res.status(201).json(updatePosts);
   } catch (error) {
