@@ -39,7 +39,7 @@ const server = http.createServer((req, res) => {
   res.end("Hello World\n");
 });
 
-server.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT);
 
 // Keep server alive by pinging it every 5 minutes
 setInterval(() => {
