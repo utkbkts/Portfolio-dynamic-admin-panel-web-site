@@ -9,6 +9,8 @@ const portfolioRouter = require("./routes/portfolio.js");
 const blogRouter = require("./routes/blogPost.js");
 const messageRouter = require("./routes/message.js");
 const compression = require("compression");
+const fetch = require("node-fetch");
+
 dotenv.config();
 
 const app = express();
@@ -28,6 +30,15 @@ app.use(
     },
   })
 );
+
+setInterval(async () => {
+  try {
+    await fetch("https://www.utkubektasoglu.pro/");
+    console.log("Ping sent to keep the website awake.");
+  } catch (err) {
+    console.error("Error while sending ping:", err);
+  }
+}, 5 * 60 * 1000); // 5 dakikada bir ping gönder
 
 //!router
 app.use("/", authRouter);
