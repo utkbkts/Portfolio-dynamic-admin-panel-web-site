@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyparser = require("body-parser");
 const dotenv = require("dotenv");
+const axios = require("axios");
 const database = require("./config/database");
 const authRouter = require("./routes/auth.js");
 const aboutRouter = require("./routes/about.js");
@@ -9,7 +10,6 @@ const portfolioRouter = require("./routes/portfolio.js");
 const blogRouter = require("./routes/blogPost.js");
 const messageRouter = require("./routes/message.js");
 const compression = require("compression");
-const fetch = require("node-fetch");
 
 dotenv.config();
 
@@ -33,7 +33,7 @@ app.use(
 
 setInterval(async () => {
   try {
-    await fetch("https://www.utkubektasoglu.pro/");
+    await axios.get("https://www.utkubektasoglu.pro/");
     console.log("Ping sent to keep the website awake.");
   } catch (err) {
     console.error("Error while sending ping:", err);
