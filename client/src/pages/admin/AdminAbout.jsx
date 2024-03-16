@@ -6,7 +6,6 @@ import {
   GetAboutPost,
   UpdatePostsAbout,
 } from "../../redux/actions/AboutActions";
-import FileBase from "react-file-base64";
 
 const initialState = {
   title: "",
@@ -79,7 +78,6 @@ const AdminAbout = () => {
       });
     }
   }, [postsAbout]);
-  console.log(postsAbout);
   return (
     <div>
       <form onSubmit={handleSubmit} className="">

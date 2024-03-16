@@ -77,7 +77,7 @@ const About = () => {
                 className="lg:w-1/2 w-full flex lg:items-start relative items-center justify-center h-full mb-12 md:mt-0"
               >
                 <img
-                  src={item.image}
+                  src={item.image.url}
                   alt="image"
                   loading="lazy"
                   className="w-[300px] h-[445px] rounded-md object-cover bg-orange-500"
