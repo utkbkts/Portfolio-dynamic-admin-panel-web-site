@@ -4,6 +4,7 @@ const bodyparser = require("body-parser");
 const dotenv = require("dotenv");
 const axios = require("axios");
 const database = require("./config/database");
+const http = require("http");
 const authRouter = require("./routes/auth.js");
 const aboutRouter = require("./routes/about.js");
 const portfolioRouter = require("./routes/portfolio.js");
@@ -31,14 +32,19 @@ app.use(
   })
 );
 
-setInterval(async () => {
-  try {
-    await axios.get("https://www.utkubektasoglu.pro/");
-    console.log("Ping sent to keep the website awake.");
-  } catch (err) {
-    console.error("Error while sending ping:", err);
-  }
-}, 5 * 60 * 1000); // 5 dakikada bir ping gönder
+//!server ping
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Hello World\n");
+});
+
+server.listen(process.env.PORT || 5000);
+
+// Keep server alive by pinging it every 5 minutes
+setInterval(() => {
+  http.get(`https://www.utkubektasoglu.pro/`);
+}, 300000); // 5 minutes
 
 //!router
 app.use("/", authRouter);
