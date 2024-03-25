@@ -35,16 +35,7 @@ const Blog = () => {
     return diffInDays <= 7;
   };
   //time
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (time > 0) {
-        setTime((prevSeconds) => prevSeconds - 1);
-      } else {
-        window.location.reload();
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [time]);
+
   return (
     <section className="h-auto mt-24 mb-24 overflow-hidden">
       <div className="text-center mb-12">
@@ -52,7 +43,7 @@ const Blog = () => {
       </div>
       {loading ? (
         <div className="flex items-center justify-center font-title gap-4">
-          <h1>Wait while the data is loading {time}</h1>
+          <h1>Wait while the data is loading</h1>
           <Spinner />
         </div>
       ) : (
