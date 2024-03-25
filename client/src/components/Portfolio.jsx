@@ -55,16 +55,7 @@ const Portfolio = () => {
   }, []);
 
   //time
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (time > 0) {
-        setTime((prevSeconds) => prevSeconds - 1);
-      } else {
-        window.location.reload();
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [time]);
+
 
   return (
     <section className="h-auto mt-24">
@@ -80,7 +71,7 @@ const Portfolio = () => {
       </motion.div>
       {loading ? (
         <div className="flex items-center justify-center font-title gap-4">
-          <h1>Wait while the data is loading {time}</h1>
+          <h1>Wait while the data is loading</h1>
           <Spinner />
         </div>
       ) : (
