@@ -149,7 +149,7 @@ const AdminPortfolio = () => {
           </table>
         </div>
         <div className="py-2">
-          <Button onClick={handleSubmit} text="Create" type="submit"></Button>
+          <Button onClick={handleSubmit} text={"Create"} type="submit"></Button>
         </div>
       </div>
       <div className="h-[400px] overflow-y-auto">
@@ -163,7 +163,6 @@ const AdminPortfolio = () => {
               <th className="border border-gray-300 text-black p-2">Link</th>
               <th className="border border-gray-300 text-black p-2">Image</th>
               <th className="border border-gray-300 text-black p-2">Actions</th>
-              <th className="border border-gray-300 text-black p-2"></th>
             </tr>
           </thead>
           <tbody>
@@ -172,7 +171,7 @@ const AdminPortfolio = () => {
                 <tr key={item._id}>
                   <>
                     <td className="border border-gray-300 p-2 text-center">
-                      {item?.category.join(", ")}
+                      {item?.category && item?.category.join(", ")}
                     </td>
                     <td className="border border-gray-300 p-2 text-center">
                       {item?.title}
@@ -182,7 +181,7 @@ const AdminPortfolio = () => {
                     </td>
                     <td className="border border-gray-300 p-2 text-center">
                       <img
-                        src={item?.image.url}
+                        src={item.image && item?.image.url}
                         alt=""
                         className="inline-block"
                         style={{ maxWidth: "80px", maxHeight: "80px" }}

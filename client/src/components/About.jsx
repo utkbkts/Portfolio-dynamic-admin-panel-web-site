@@ -38,6 +38,7 @@ const About = () => {
   const ref = useRef(null);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [time, setTime] = useState(30);
   const { postsAbout } = useSelector((state) => state.aboutPost);
   useEffect(() => {
     setLoading(true);
@@ -45,11 +46,24 @@ const About = () => {
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, [dispatch]);
+
+  //time
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (time > 0) {
+        setTime((prevSeconds) => prevSeconds - 1);
+      } else {
+        window.location.reload();
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [time]);
   return (
     <section className="h-auto">
       {loading ? (
         <div className="flex items-center justify-center font-title gap-4">
-          <h1>Wait while the data is loading</h1>
+          <h1>Wait while the data is loading {time}</h1>
           <Spinner />
         </div>
       ) : (

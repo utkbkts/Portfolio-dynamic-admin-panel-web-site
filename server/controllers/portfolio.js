@@ -45,15 +45,17 @@ const getPortfolio = async (req, res) => {
 
 const updatePortfolio = async (req, res) => {
   try {
-    const { _id, ...formdata } = req.body;
-    const updatePosts = await PortfolioSchema.findByIdAndUpdate(_id, formdata, {
+    const { id } = req.params;
+    const updatePosts = await PortfolioSchema.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-
-    res.status(201).json(updatePosts);
+    if (!updatePosts) {
+      return res.status(404).json({ message: "Belge bulunamadı." });
+    }
+    res.status(200).json(updatePosts);
   } catch (error) {
-    console.log(error);
-    res.status(401).json({ message: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Sunucu hatası." });
   }
 };
 
