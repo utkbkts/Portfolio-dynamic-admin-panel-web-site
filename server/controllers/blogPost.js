@@ -32,7 +32,7 @@ const getBlogPost = async (req, res) => {
     if (cached) {
       return res.status(200).json(JSON.parse(cached));
     }
-    const getPosts = await blogPostSchema.find();
+    const getPosts = await blogPostSchema.find().sort({ updatedAt: -1 });
 
     await redis.set("blogpost", JSON.stringify(getPosts));
 
