@@ -32,7 +32,7 @@ const getPortfolio = async (req, res) => {
     if (cached) {
       return res.status(200).json(JSON.parse(cached));
     }
-    const getPosts = await PortfolioSchema.find().sort({ timestamps: -1 });
+    const getPosts = await PortfolioSchema.find().sort({ updatedAt: -1 });
 
     await redis.set("portfolioPost", JSON.stringify(getPosts));
 

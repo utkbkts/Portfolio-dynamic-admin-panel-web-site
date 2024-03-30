@@ -32,6 +32,7 @@ const Blog = () => {
     const postDate = new Date(createdat);
     const currentDate = new Date();
     const diffInDays = (currentDate - postDate) / (1000 * 60 * 60 * 24);
+    console.log(diffInDays);
     return diffInDays <= 7;
   };
   //time
@@ -96,7 +97,7 @@ const Blog = () => {
                             loading="lazy"
                             className=" h-[300px] rounded-md object-cover w-full"
                           />
-                          {!CreatedHandle(item.createdAt) && (
+                          {CreatedHandle(item.createdAt) && (
                             <div className="absolute  bg-primary font-title text-red uppercase p-2  top-0 right-0">
                               NEW PROJECT
                             </div>
