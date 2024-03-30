@@ -25,15 +25,17 @@ export const GetAboutPost = () => async (dispatch) => {
   }
 };
 
-export const UpdatePostsAbout = (formData) => async (dispatch) => {
+export const UpdatePostsAbout = (formData, id) => async (dispatch) => {
   try {
     const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/updateAboutPost`,
+      `${import.meta.env.VITE_API_URL}/updateAboutPost/${id}`,
       formData
     );
+
     dispatch({ type: "UPDATE_POST", payload: data });
     toast.success("Updated successfully");
   } catch (error) {
     toast.error(error.message);
+    console.log(error);
   }
 };

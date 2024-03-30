@@ -21,7 +21,7 @@ const AboutPostReducer = (state = { postsAbout: [] }, action) => {
       return {
         ...state,
         postsAbout: state.postsAbout.filter(
-          (post) => post.id !== action.payload
+          (post) => post?.id !== action.payload
         ),
       };
     default:

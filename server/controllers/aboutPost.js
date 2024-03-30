@@ -47,14 +47,10 @@ const getAboutPost = async (req, res) => {
 
 const updatePostAbout = async (req, res) => {
   try {
-    const { email } = req.body;
-    const updatePosts = await AboutPostSchema.findOneAndUpdate(
-      { email: email },
-      req.body,
-      {
-        new: true,
-      }
-    );
+    const { id } = req.params;
+    const updatePosts = await AboutPostSchema.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     res.status(200).json(updatePosts);
   } catch (error) {
     console.log(error);

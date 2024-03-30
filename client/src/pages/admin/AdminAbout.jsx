@@ -50,8 +50,9 @@ const AdminAbout = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (postsAbout.length > 0) {
-      dispatch(UpdatePostsAbout(formData));
+    const id = postsAbout.length > 0 ? postsAbout[0]._id : null;
+    if (id) {
+      dispatch(UpdatePostsAbout(formData, id));
     } else {
       dispatch(CreatePostAbout(formData));
     }
@@ -60,21 +61,21 @@ const AdminAbout = () => {
   useEffect(() => {
     dispatch(GetAboutPost());
   }, []);
-
+  // console.log(postsAbout);
   useEffect(() => {
     if (postsAbout && postsAbout.length > 0) {
       setFormData({
         title: postsAbout[0]?.title || "",
-        paragraph: postsAbout[0].paragraph || "",
-        name: postsAbout[0].name || "",
-        birthday: postsAbout[0].birthday || "",
-        experience: postsAbout[0].experience || "",
-        phone: postsAbout[0].phone || "",
-        email: postsAbout[0].email || "",
-        educationLevel: postsAbout[0].educationLevel || "",
-        projectFinished: postsAbout[0].projectFinished || "",
-        freelance: postsAbout[0].freelance || "",
-        image: postsAbout[0].image || null,
+        paragraph: postsAbout[0]?.paragraph || "",
+        name: postsAbout[0]?.name || "",
+        birthday: postsAbout[0]?.birthday || "",
+        experience: postsAbout[0]?.experience || "",
+        phone: postsAbout[0]?.phone || "",
+        email: postsAbout[0]?.email || "",
+        educationLevel: postsAbout[0]?.educationLevel || "",
+        projectFinished: postsAbout[0]?.projectFinished || "",
+        freelance: postsAbout[0]?.freelance || "",
+        image: postsAbout[0]?.image || null,
       });
     }
   }, [postsAbout]);

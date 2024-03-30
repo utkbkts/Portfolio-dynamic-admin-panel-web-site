@@ -8,7 +8,7 @@ const {
 const router = express.Router();
 
 router.post("/createAboutPost", aboutPostCreate);
-router.put("/updateAboutPost", updatePostAbout);
+router.put("/updateAboutPost/:id", updatePostAbout);
 router.get("/getAboutPost", getAboutPost);
 
 module.exports = router;
