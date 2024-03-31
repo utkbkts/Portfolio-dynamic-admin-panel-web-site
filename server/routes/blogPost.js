@@ -9,7 +9,7 @@ const {
 const router = express.Router();
 
 router.post("/createBlogPost", BlogPostCreate);
-router.put("/updateBlogPost", updatePostBlog);
+router.put("/updateBlogPost/:id", updatePostBlog);
 router.delete("/deleteBlogPost/:id", deleteBlogPost);
 router.get("/getBlogPost", getBlogPost);
 

@@ -25,18 +25,21 @@ export const GetBlogPost = () => async (dispatch) => {
   }
 };
 
-export const UpdatePostsBLOG = (formData) => async (dispatch) => {
+export const UpdatePostsBLOG = (formData, id) => async (dispatch) => {
   try {
     const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/updateBlogPost`,
+      `${import.meta.env.VITE_API_URL}/updateBlogPost/${id}`,
       formData
     );
+
     dispatch({ type: "UPDATE_POST_BLOG", payload: data });
     toast.success("Updated successfully");
   } catch (error) {
     toast.error(error.message);
+    console.log(error);
   }
 };
+
 export const DeleteBlogPost = (id) => async (dispatch) => {
   try {
     await axios.delete(`${import.meta.env.VITE_API_URL}/deleteBlogPost/${id}`);

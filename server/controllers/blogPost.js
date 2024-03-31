@@ -32,7 +32,7 @@ const getBlogPost = async (req, res) => {
     if (cached) {
       return res.status(200).json(JSON.parse(cached));
     }
-    const getPosts = await blogPostSchema.find();
+    const getPosts = await blogPostSchema.find().sort({ createdAt: -1 });
 
     await redis.set("blogpost", JSON.stringify(getPosts));
 
@@ -66,14 +66,10 @@ const deleteBlogPost = async (req, res) => {
 
 const updatePostBlog = async (req, res) => {
   try {
-    const { email } = req.body;
-    const updatePosts = await blogPostSchema.findOneAndUpdate(
-      { email: email },
-      req.body,
-      {
-        new: true,
-      }
-    );
+    const { id } = req.params;
+    const updatePosts = await blogPostSchema.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     res.status(200).json(updatePosts);
   } catch (error) {
     console.log(error);

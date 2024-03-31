@@ -92,7 +92,7 @@ const Blog = () => {
                       <div className="relative  overflow-hidden  w-full">
                         <div className=" relative  overflow-hidden w-full">
                           <img
-                            src={item.image.url}
+                            src={item?.image?.url}
                             alt="image"
                             loading="lazy"
                             className=" h-[300px] rounded-md object-cover w-full"

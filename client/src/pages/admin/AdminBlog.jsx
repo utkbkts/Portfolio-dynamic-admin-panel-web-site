@@ -6,7 +6,9 @@ import {
   CreatePostBLOG,
   DeleteBlogPost,
   GetBlogPost,
+  UpdatePostsBLOG,
 } from "../../redux/actions/BlogActions";
+import toast from "react-hot-toast";
 
 const initialState = {
   image: null,
@@ -16,6 +18,7 @@ const initialState = {
 const AdminBlog = () => {
   const [formdata, setformdata] = useState(initialState);
   const dispatch = useDispatch();
+  const [updateId, setUpdateId] = useState(null);
   const { postsBlog } = useSelector((state) => state.BlogPost);
 
   const handleChange = (e) => {
@@ -53,6 +56,29 @@ const AdminBlog = () => {
 
   const handleDelete = (id) => {
     dispatch(DeleteBlogPost(id));
+  };
+
+  const handleUpdate = (id) => {
+    const post = postsBlog.find((item) => item._id === id);
+    if (!post) {
+      console.log("Post not found");
+      return;
+    }
+
+    setformdata({
+      image: post.image,
+      description: post.description,
+      title: post.title,
+    });
+
+    setUpdateId(id);
+  };
+
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault();
+    dispatch(UpdatePostsBLOG(formdata, updateId));
+    setformdata(initialState);
+    setUpdateId(null);
   };
 
   return (
@@ -107,7 +133,13 @@ const AdminBlog = () => {
           </table>
         </div>
         <div className="py-2">
-          <Button text="Create" type="submit"></Button>
+          {updateId ? (
+            <div className="py-2">
+              <Button text="Update" onClick={handleUpdateSubmit}></Button>
+            </div>
+          ) : (
+            <Button text={"Create"} type="submit"></Button>
+          )}
         </div>
       </form>
       <div className="h-[400px] overflow-y-auto">
@@ -119,6 +151,7 @@ const AdminBlog = () => {
                 Description
               </th>
               <th className="border border-gray-300 text-black p-2">Image</th>
+              <th className="border border-gray-300 text-black p-2">Actions</th>
               <th className="border border-gray-300 text-black p-2">Actions</th>
             </tr>
           </thead>
@@ -135,7 +168,7 @@ const AdminBlog = () => {
                     </td>
                     <td className="border border-gray-300 p-2 text-center">
                       <img
-                        src={item?.image.url}
+                        src={item?.image?.url}
                         alt=""
                         className="inline-block"
                         style={{ maxWidth: "80px", maxHeight: "80px" }}
@@ -147,12 +180,21 @@ const AdminBlog = () => {
                     >
                       DELETE
                     </td>
+                    <td
+                      onClick={() => {
+                        handleUpdate(item._id);
+                        setUpdateId(item._id); // Seçilen blog gönderisinin ID'sini sakla
+                      }}
+                      className="border border-gray-300 p-2 text-center cursor-pointer"
+                    >
+                      Update
+                    </td>
                   </>
                 </tr>
               ))}
           </tbody>
         </table>
-      </div>
+      </div>{" "}
     </div>
   );
 };
