@@ -1,2 +1,5 @@
 Hello, I'm here with a new project 🚀🚀 I actually updated my official website, my portfolio page. 👽 This time, I added an admin panel to easily manage and share the projects I do every week. Sometimes I'll share articles, like a blog page, but I didn't make the blog page too wide; after all, it's a portfolio page. 🎃 If you have any questions, feel free to ask. I didn't add cookies to the page, but I'll update it soon. Take care and see you soon 😉😉 ![screencapture-localhost-5173-2024-03-15-01_32_05](https://github.com/utkbkts/Portfolio-dynamic-admin-panel-web-site/assets/126083466/ea1d000c-88d0-461d-b267-56ea70b10872)
-![screencapture-localhost-5173-2024-03-15-01_32_05](https://github.com/utkbkts/Portfolio-dynamic-admin-panel-web-site/assets/126083466/08c3a82a-1b1d-4314-8729-09b1bbe484d3)
+
+![Ekran görüntüsü 2024-03-30 174015](https://github.com/utkbkts/Portfolio-dynamic-admin-panel-web-site/assets/126083466/19090d7c-9081-4ceb-98e5-7535038eb7e9)
+![Ekran görüntüsü 2024-03-30 174026](https://github.com/utkbkts/Portfolio-dynamic-admin-panel-web-site/assets/126083466/e8afed24-089f-4357-87dc-793a1e22328a)
+![Ekran görüntüsü 2024-03-30 174001](https://github.com/utkbkts/Portfolio-dynamic-admin-panel-web-site/assets/126083466/d27634cd-1568-49a4-89cd-2ea4156d1336)
