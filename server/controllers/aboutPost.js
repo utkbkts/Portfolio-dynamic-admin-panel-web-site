@@ -33,7 +33,10 @@ const getAboutPost = async (req, res) => {
       return res.status(200).json(JSON.parse(cached));
     }
 
-    const getPosts = await AboutPostSchema.find();
+    const getPosts = await AboutPostSchema.find().sort({
+      createdAt: -1,
+      updatedAt: -1,
+    });
 
     // Güncellenmiş verileri Upstash'e yeniden kaydedin
     await redis.set("aboutPost", JSON.stringify(getPosts));
