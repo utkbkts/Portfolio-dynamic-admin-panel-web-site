@@ -23,7 +23,7 @@ const AdminLogin = () => {
     const checkLocalStorage = () => {
       const data = JSON.parse(localStorage.getItem("admin"));
       if (data?.status === "OK") {
-        navigate("/admindashboard");
+        navigate("/admin/dashboard");
       } else {
         setTimeout(checkLocalStorage, 100); // Tekrar denemek için 100 ms bekleyin
       }

@@ -61,7 +61,6 @@ const AdminBlog = () => {
   const handleUpdate = (id) => {
     const post = postsBlog.find((item) => item._id === id);
     if (!post) {
-      console.log("Post not found");
       return;
     }
 

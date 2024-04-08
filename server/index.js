@@ -10,6 +10,8 @@ const aboutRouter = require("./routes/about.js");
 const portfolioRouter = require("./routes/portfolio.js");
 const blogRouter = require("./routes/blogPost.js");
 const messageRouter = require("./routes/message.js");
+const myUserRoutes = require("./routes/MyUserRoutes.js");
+const MyuserReviews = require("./routes/UserReviews.js");
 const compression = require("compression");
 
 dotenv.config();
@@ -32,14 +34,14 @@ app.use(
   })
 );
 
-//!server ping
-
 //!router
 app.use("/", authRouter);
 app.use("/", aboutRouter);
 app.use("/", portfolioRouter);
 app.use("/", blogRouter);
 app.use("/", messageRouter);
+app.use("/api/user", myUserRoutes);
+app.use("/", MyuserReviews);
 
 database();
 app.listen(process.env.PORT, () => {

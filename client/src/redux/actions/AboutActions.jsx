@@ -36,6 +36,5 @@ export const UpdatePostsAbout = (formData, id) => async (dispatch) => {
     toast.success("Updated successfully");
   } catch (error) {
     toast.error(error.message);
-    console.log(error);
   }
 };

@@ -33,7 +33,6 @@ export const UpdatePostsPortfolio = (id, formdata) => async (dispatch) => {
       formdata
     );
     dispatch({ type: "UPDATE_POST_PORTFOLIO", payload: data });
-    console.log(data);
     if (data.status === 201) {
       toast.success("Updated successfully");
     }

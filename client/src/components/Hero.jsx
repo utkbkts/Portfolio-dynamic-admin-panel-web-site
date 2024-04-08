@@ -62,7 +62,7 @@ const Hero = () => {
           <h1 className="title-3 font-title leading-[86px] text-primary title whitespace-nowrap">
             UTKU BEKTASOGLU
           </h1>
-          <span className="font-small leading-[48px] text-[40px] text-white">
+          <span className="font-small leading-[48px] text-[30px] text-white">
             {typeEffect}
             <span className="text-white">
               <Cursor cursorStyle="|" />
@@ -80,7 +80,7 @@ const Hero = () => {
             >
               <CiPlay1
                 size={30}
-                className="title text-primary relative z-50 bg-transparent"
+                className="title text-primary relative z-10 bg-transparent"
               />
             </div>
           </div>

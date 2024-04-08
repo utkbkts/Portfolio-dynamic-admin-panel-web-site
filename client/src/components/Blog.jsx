@@ -32,7 +32,6 @@ const Blog = () => {
     const postDate = new Date(createdat);
     const currentDate = new Date();
     const diffInDays = (currentDate - postDate) / (1000 * 60 * 60 * 24);
-    console.log(diffInDays);
     return diffInDays <= 7;
   };
   //time
@@ -88,7 +87,7 @@ const Blog = () => {
               <div className="swiper-wrapper">
                 {postsBlog.map((item) => (
                   <SwiperSlide key={item._id} className="swiper-slide">
-                    <div className="flex flex-col shadow-md p-2 rounded-md border-primary border  transition-all duration-300 ease-in-out h-[500px] w-full">
+                    <div className="flex flex-col  shadow-md  rounded-md border-primary border  transition-all duration-300 ease-in-out h-[500px] w-full">
                       <div className="relative  overflow-hidden  w-full">
                         <div className=" relative  overflow-hidden w-full">
                           <img
@@ -113,7 +112,7 @@ const Blog = () => {
                         <p className="font-title text-seconday text-[1.2rem] text-center mt-6 border-b-2">
                           {item.title}
                         </p>
-                        <div className="flex lg:items-start items-center justify-center text-center font-small uppercase">
+                        <div className="flex py-4 lg:items-start items-center justify-center text-center font-small uppercase">
                           {item.description}
                         </div>
                       </div>

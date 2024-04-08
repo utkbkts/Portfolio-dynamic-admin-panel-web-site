@@ -61,7 +61,6 @@ const AdminAbout = () => {
   useEffect(() => {
     dispatch(GetAboutPost());
   }, []);
-  // console.log(postsAbout);
   useEffect(() => {
     if (postsAbout && postsAbout.length > 0) {
       setFormData({

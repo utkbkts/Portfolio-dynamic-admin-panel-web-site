@@ -11,7 +11,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   // font-weight: 100;
   // font-style: normal;
 }
@@ -45,7 +45,7 @@ body {
 }
 .title-1 {
   -webkit-text-stroke: 1px #dee2e6;
-  font-size: calc(2.125rem + 10.5vw);
+  font-size: calc(2.125rem + 6.5vw);
   line-height: 1.2;
   font-weight: 900 !important;
   text-transform: uppercase !important;
@@ -230,4 +230,25 @@ body {
   100% {
     transform: translateY(-15px);
   }
+}
+
+swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clippath {
+  clip-path: xywh(0 5px 100% 75% round 15% 0);
+  background-color: #0bceaf;
 }
