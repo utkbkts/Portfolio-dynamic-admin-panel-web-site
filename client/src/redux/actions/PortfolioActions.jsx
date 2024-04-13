@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export const CreatePostPortfolio = (formdata) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/createPortfolio`,
+      `https://api.utkubektasoglu.pro/createPortfolio`,
       formdata
     );
     dispatch({ type: "CREATE_POST_PORTFOLIO", payload: data });
@@ -17,7 +17,7 @@ export const CreatePostPortfolio = (formdata) => async (dispatch) => {
 export const GetAboutPortfolio = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/getPortfolio`
+      `https://api.utkubektasoglu.pro/getPortfolio`
     );
     dispatch({ type: "GET_POSTS_PORTFOLIO", payload: data });
   } catch (error) {
@@ -29,7 +29,7 @@ export const GetAboutPortfolio = () => async (dispatch) => {
 export const UpdatePostsPortfolio = (id, formdata) => async (dispatch) => {
   try {
     const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/updatePortfolio/${id}`,
+      `https://api.utkubektasoglu.pro/updatePortfolio/${id}`,
       formdata
     );
     dispatch({ type: "UPDATE_POST_PORTFOLIO", payload: data });
@@ -42,7 +42,7 @@ export const UpdatePostsPortfolio = (id, formdata) => async (dispatch) => {
 };
 export const DeletePostsPortfolio = (id) => async (dispatch) => {
   try {
-    await axios.delete(`${import.meta.env.VITE_API_URL}/deletePortfolio/${id}`);
+    await axios.delete(`https://api.utkubektasoglu.pro/deletePortfolio/${id}`);
     dispatch({ type: "DELETE_POST_PORTFOLIO", payload: id });
     toast.success("Deleted successfully");
   } catch (error) {

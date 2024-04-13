@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export const RegisterActions = (email, password) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/register`,
+      `https://api.utkubektasoglu.pro/register`,
       { email, password }
     );
     dispatch({ type: "REGISTER", payload: data });
@@ -15,7 +15,7 @@ export const RegisterActions = (email, password) => async (dispatch) => {
 
 export const LoginActions = (email, password) => async (dispatch) => {
   try {
-    const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/login`, {
+    const { data } = await axios.post(`https://api.utkubektasoglu.pro/login`, {
       email,
       password,
     });

@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export const CreatePostBLOG = (formdata) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/createBlogPost`,
+      `https://api.utkubektasoglu.pro/createBlogPost`,
       formdata
     );
     dispatch({ type: "CREATE_POST_BLOG", payload: data });
@@ -17,7 +17,7 @@ export const CreatePostBLOG = (formdata) => async (dispatch) => {
 export const GetBlogPost = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/getBlogPost`
+      `https://api.utkubektasoglu.pro/getBlogPost`
     );
     dispatch({ type: "GET_POSTS_BLOG", payload: data });
   } catch (error) {
@@ -28,7 +28,7 @@ export const GetBlogPost = () => async (dispatch) => {
 export const UpdatePostsBLOG = (formData, id) => async (dispatch) => {
   try {
     const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/updateBlogPost/${id}`,
+      `https://api.utkubektasoglu.pro/updateBlogPost/${id}`,
       formData
     );
 
@@ -42,7 +42,7 @@ export const UpdatePostsBLOG = (formData, id) => async (dispatch) => {
 
 export const DeleteBlogPost = (id) => async (dispatch) => {
   try {
-    await axios.delete(`${import.meta.env.VITE_API_URL}/deleteBlogPost/${id}`);
+    await axios.delete(`https://api.utkubektasoglu.pro/deleteBlogPost/${id}`);
     dispatch({ type: "DELETE_POST_BLOG", payload: id });
     toast.success("Deleted successfully");
   } catch (error) {

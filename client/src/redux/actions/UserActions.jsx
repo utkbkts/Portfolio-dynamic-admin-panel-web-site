@@ -5,7 +5,7 @@ export const ReviewsActions =
   (rating, userNick, userEmail, data2) => async (dispatch) => {
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/reviews`,
+        `https://api.utkubektasoglu.pro/reviews`,
         { rating, userNick, userEmail, ...data2 }
       );
       dispatch({ type: "CREATE_REVIEWS", payload: data });
@@ -20,7 +20,7 @@ export const ReviewsActions =
 
 export const GetUserActions = () => async (dispatch) => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/reviews`, {
+    const response = await fetch(`https://api.utkubektasoglu.pro/reviews`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

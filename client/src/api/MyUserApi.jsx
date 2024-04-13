@@ -11,7 +11,7 @@ export const useCreateMyUser = () => {
     try {
       setLoading(true);
       const accessToken = await getAccessTokenSilently();
-      const response = await fetch(`${API_BASE_URL}/api/user`, {
+      const response = await fetch(`https://api.utkubektasoglu.pro/api/user`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
