@@ -5,7 +5,7 @@ export const ReviewsActions =
   (rating, userNick, userEmail, data2) => async (dispatch) => {
     try {
       const { data } = await axios.post(
-        `https://api.utkubektasoglu.pro/reviews`,
+        `https://api.utkubektasoglu.com/reviews`,
         { rating, userNick, userEmail, ...data2 }
       );
       dispatch({ type: "CREATE_REVIEWS", payload: data });
@@ -20,7 +20,7 @@ export const ReviewsActions =
 
 export const GetUserActions = () => async (dispatch) => {
   try {
-    const response = await fetch(`https://api.utkubektasoglu.pro/reviews`, {
+    const response = await fetch(`https://api.utkubektasoglu.com/reviews`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

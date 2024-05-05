@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export const CreatePostAbout = (formData) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      `https://api.utkubektasoglu.pro/createAboutPost`,
+      `https://api.utkubektasoglu.com/createAboutPost`,
       formData
     );
     dispatch({ type: "CREATE_POST", payload: data });
@@ -17,7 +17,7 @@ export const CreatePostAbout = (formData) => async (dispatch) => {
 export const GetAboutPost = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `https://api.utkubektasoglu.pro/getAboutPost`
+      `https://api.utkubektasoglu.com/getAboutPost`
     );
     dispatch({ type: "GET_POSTS", payload: data });
   } catch (error) {
@@ -28,7 +28,7 @@ export const GetAboutPost = () => async (dispatch) => {
 export const UpdatePostsAbout = (formData, id) => async (dispatch) => {
   try {
     const { data } = await axios.put(
-      `https://api.utkubektasoglu.pro/updateAboutPost/${id}`,
+      `https://api.utkubektasoglu.com/updateAboutPost/${id}`,
       formData
     );
 

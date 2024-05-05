@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 export const CreatePostBLOG = (formdata) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      `https://api.utkubektasoglu.pro/createBlogPost`,
+      `https://api.utkubektasoglu.com/createBlogPost`,
       formdata
     );
     dispatch({ type: "CREATE_POST_BLOG", payload: data });
@@ -17,7 +17,7 @@ export const CreatePostBLOG = (formdata) => async (dispatch) => {
 export const GetBlogPost = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `https://api.utkubektasoglu.pro/getBlogPost`
+      `https://api.utkubektasoglu.com/getBlogPost`
     );
     dispatch({ type: "GET_POSTS_BLOG", payload: data });
   } catch (error) {
@@ -28,7 +28,7 @@ export const GetBlogPost = () => async (dispatch) => {
 export const UpdatePostsBLOG = (formData, id) => async (dispatch) => {
   try {
     const { data } = await axios.put(
-      `https://api.utkubektasoglu.pro/updateBlogPost/${id}`,
+      `https://api.utkubektasoglu.com/updateBlogPost/${id}`,
       formData
     );
 
@@ -42,7 +42,7 @@ export const UpdatePostsBLOG = (formData, id) => async (dispatch) => {
 
 export const DeleteBlogPost = (id) => async (dispatch) => {
   try {
-    await axios.delete(`https://api.utkubektasoglu.pro/deleteBlogPost/${id}`);
+    await axios.delete(`https://api.utkubektasoglu.com/deleteBlogPost/${id}`);
     dispatch({ type: "DELETE_POST_BLOG", payload: id });
     toast.success("Deleted successfully");
   } catch (error) {

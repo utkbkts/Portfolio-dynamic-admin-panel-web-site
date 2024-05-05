@@ -35,7 +35,7 @@ const Contact = () => {
   //!form create fetch start
 
   async function DataFetch(data) {
-    const res = await fetch(`https://api.utkubektasoglu.pro/message`, {
+    const res = await fetch(`https://api.utkubektasoglu.com/message`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
